@@ -8,7 +8,8 @@ class AtorController extends Controller
 {
     public function directory(){
       $atores = Actors::join('movies','movies.id','=','actors.favorite_movie_id')->get();
-      return view('atores')->with('atores', $atores);
+      return view('atores')
+      ->with('atores', $atores);
     }
 
     public function mostrar($id){
@@ -16,4 +17,11 @@ class AtorController extends Controller
       $nome = $ator->getNomeCompleto();
       return view('ator')->with('ator', $nome);
     }
-}
+
+    public function procurar(Request $request){
+      $ator = Actors::where('first_name', '=', $request->input('procurar_ator'))->get();
+        return view('atores')
+        ->with('request', $request)
+        ->with('ator', $ator);
+      }
+    }

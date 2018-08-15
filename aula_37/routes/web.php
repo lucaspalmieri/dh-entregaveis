@@ -18,3 +18,7 @@ Route::get('/', function () {
 Route::get('/atores', 'AtorController@directory');
 
 Route::get('/ator/{id}', 'AtorController@mostrar');
+
+Route::get('/atores/procurar', 'AtorController@procurar');
+
+Route::post('/atores/procurar', 'AtorController@procurar');

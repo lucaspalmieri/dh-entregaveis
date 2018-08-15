@@ -15,10 +15,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/form', 'FilmesController@form');
+                  /* Rotas de filmes */
 
-Route::post('/adicionar', 'FilmesController@validar');
+Route::get('/listaFilmes', 'FilmesController@listaFilmes');
 
-Route::get('/actors/add', 'AtoresController@form');
+Route::get('/movie/exibir/{id}', 'FilmesController@exibir');
 
-Route::post('/adicionarAtor', 'AtoresController@validar');
+Route::get('/formAddFilme', 'FilmesController@formAddFilme');
+
+Route::post('/adicionarFilme', 'FilmesController@adicionarFilme');
+
+Route::get('/movie/edit/{id}', 'FilmesController@formEditFilme');
+
+Route::put('/editarFilme/{id}', 'FilmesController@editarFilme');
+
+Route::get('/movie/delete/{id}', 'FilmesController@prepararDeletar');
+
+Route::delete('/deletarFilme/{id}', 'FilmesController@deletar');
+
+                /* Rotas de Atores */
+
+Route::get('/listaAtores', 'AtoresController@listaAtores');
+
+Route::get('/actor/exibir/{id}', 'AtoresController@exibir');
+
+Route::get('/formAddAtor', 'AtoresController@formAddAtor');
+
+Route::post('/adicionarAtor', 'AtoresController@adicionarAtor');
+
+Route::get('/actor/edit/{id}', 'AtoresController@formEditAtor');
+
+Route::put('actor/edit/{id}', 'AtoresController@editarAtor');
+
+Route::get('/actor/delete/{id}', 'AtoresController@prepararDeletar');
+
+Route::delete('/deletarAtor/{id}', 'AtoresController@deletar');

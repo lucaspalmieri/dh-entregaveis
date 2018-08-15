@@ -4,19 +4,11 @@
         <title>Adicionar Ator</title>
     </head>
     <body>
-                @if (count($errors) > 0)
-           <div class="alert alert-danger">
-           <ul>
-           @foreach ($errors->all() as $error)
-           <li>{{ $error }}</li>
-           @endforeach
-           </ul>
-           </div>
-          @endif
 
-        <h1 align="center">Formulário</h1>
-        <form action="/adicionarAtor" id="adicionarFilme" name="adicionarFilme" method="POST">
+        <h1 align="center">Formulário Adicionar Ator</h1>
+        <form action="/adicionarAtor" id="adicionarAtor" name="adicionarFilme" method="POST">
           {{csrf_field()}}
+          {{method_field('POST')}}
             <div class="form-group col-6 m-auto">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" name="first_name" id="first_name"/>
@@ -28,6 +20,15 @@
             <div class="form-group col-6 m-auto">
                 <label for="classificacao">Classificação</label>
                 <input type="text" class="form-control" name="rating" id="rating"/>
+            </div>
+            <div class="form-group col-6 m-auto">
+              <label for="filmeFavorito">Filme favorito</label><br>
+              <select class="filmeFavorito" name="filmeFavorito">
+                  @foreach ($lista as $filme)
+                    <option value="{{$filme->id}}">{{$filme->title}}</option>
+                  @endforeach
+
+              </select>
             </div>
             <br>
             <div class="form-group col-6 m-auto">
